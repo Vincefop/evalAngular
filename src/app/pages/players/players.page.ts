@@ -28,6 +28,18 @@ export class PlayersPage implements OnInit {
     })
   }
 
+  createCharacter(newCharacter: Character){
+    this.characterService.create(newCharacter).subscribe({
+      next: () => null,
+      error: err => console.error(err),
+      complete: () =>{
+        console.log("post effectué");
+        this.getAll();
+      }
+
+    })
+  }
+
   modifyCharacter(modifiedCharacter: Character): void {
     this.characterService.modify(modifiedCharacter).subscribe({
       next: () => null,
