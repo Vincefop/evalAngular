@@ -1,0 +1,11 @@
+<form [formGroup]="formulaire" (submit)="save()">
+    <label for="title">title: </label>
+    <input type="text" formControlName="title" id="title">
+    <label for="key">key: </label>
+    <input type="text" formControlName="key" id="key">
+    <label for="name">name: </label>
+    <input type="text" formControlName="name" id="name">
+    <label for="active">active: </label>
+    <input type="checkbox" checked formControlName="active" id="active">
+    <button type="submit">Save</button>
+</form> 

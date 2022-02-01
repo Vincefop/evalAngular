@@ -1,0 +1,28 @@
+<h2>Créez un personnage : </h2>
+<app-form-new-character (characterCreated)="getAll()"></app-form-new-character>
+
+
+<p (click)="changeActive()"> Afficher les joueurs actifs </p>
+<p (click)="changePassive()"> Afficher les joueurs inactifs </p>
+
+<div *ngIf="showActive">
+    <div *ngFor="let character of activeCharacterList">
+        <div *ngIf="character.active">
+            - {{character.name}} (active : {{character.active}}
+            <button (click)=changeState(character)>change</button>
+            )
+            <button (click)=deleteCharacter(character)>X</button>
+        </div>  
+    </div>
+</div>
+
+<div *ngIf="showPassive">
+    <div *ngFor="let character of activeCharacterList">
+        <div *ngIf="!character.active">
+            - {{character.name}} (active : {{character.active}}
+            <button (click)=changeState(character)>change</button>
+            )
+            <button (click)=deleteCharacter(character)>X</button>
+        </div>  
+    </div>
+</div>
