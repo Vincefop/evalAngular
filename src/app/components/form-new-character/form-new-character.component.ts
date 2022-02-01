@@ -9,10 +9,15 @@ import { Character } from 'src/app/models/player';
 })
 export class FormNewCharacterComponent implements OnInit {
 
+  //Pour le formulaire on va utiliser un formGroup
   formulaire: FormGroup;
 
+  //Le Output est un eventEmitter qui va envoyer de l'information à la page parente playersPage
   @Output() characterCreated: EventEmitter<Character> = new EventEmitter();
 
+  /**
+   * Le constructeur initialise le formulaire et les valeurs du formulaire pour les récupérer après
+   */
   constructor() { 
     this.formulaire = new FormGroup({
       name: new FormControl(),
@@ -26,7 +31,10 @@ export class FormNewCharacterComponent implements OnInit {
   }
 
 
+  /**
+   * La fonction save va envoyer les données du formulaire à la page parente pour qu'elle l'enregistre avec le service
+   */
   save(): void {
-    this.characterCreated.emit(this.formulaire.value);
+    this.characterCreated.emit(this.formulaire.value)
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL: "http://localhost:3000"
+  URL: "http://localhost:3000"//le json-server va utiliser le port 3000 
 };
 
 /*

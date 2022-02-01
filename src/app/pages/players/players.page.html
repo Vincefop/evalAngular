@@ -1,12 +1,19 @@
 <h2>Créez un personnage : </h2>
+<!--Affiche le component formulaire pour créer un nouveau personnage
+Il attend un output characterCreated, pour récupérer le $event,
+ dans lequel se trouve le nouveau character à ajouter à la bdd-->
 <app-form-new-character (characterCreated)="createCharacter($event)"></app-form-new-character>
 
 
-<p (click)="changeActive()"> Afficher les joueurs actifs </p>
-<p (click)="changePassive()"> Afficher les joueurs inactifs </p>
+<!-- Au click affiche les characters actifs/inactifs -->
+<button (click)="changeActive()"> Afficher les joueurs actifs </button>
+<button (click)="changePassive()"> Afficher les joueurs inactifs </button>
 
-<div *ngIf="showActive">
-    <div *ngFor="let character of activeCharacterList">
+<!--Liste des noms des charcters actifs 
+Nous pouvons changer leur status actif/passif
+et détruire un character-->
+<div *ngIf="showActive"> Les joueurs actifs: 
+    <div *ngFor="let character of charactersList">
         <div *ngIf="character.active">
             - {{character.name}} (active : {{character.active}}
             <button (click)=changeState(character)>change</button>
@@ -16,8 +23,13 @@
     </div>
 </div>
 
-<div *ngIf="showPassive">
-    <div *ngFor="let character of activeCharacterList">
+<!--idem pour characters inactifs
+J'ai créé deux divs mais j'aurais pu n'en mettre qu'une
+J'ai laissé les deux car 
+dans l'idéal j'aurais voulu avec du css afficher les deux l'une à côté de l'autre
+-->
+<div *ngIf="showPassive"> Les joueurs inactifs: 
+    <div *ngFor="let character of charactersList">
         <div *ngIf="!character.active">
             - {{character.name}} (active : {{character.active}}
             <button (click)=changeState(character)>change</button>
